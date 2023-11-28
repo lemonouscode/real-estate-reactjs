@@ -6,10 +6,10 @@ export const VillaUI = ({ formData, pageTitle ,buttonText, children }) => {
   
 
   return (
-    <div className='py-20 flex flex-col gap-5'>
+    <div className='py-20 flex flex-col gap-5 bg-slate-400'>
       <h1 className='text-5xl mx-auto mb-5'>{pageTitle}</h1>
       <form onSubmit={handleSubmit} className='flex flex-col max-w-md mx-auto gap-3'>
-        <h3 className='text-xl'>Title</h3>
+        <h3 className='text-xl text-white'>Title</h3>
         <input 
           type="text" 
           id='title'
@@ -18,7 +18,7 @@ export const VillaUI = ({ formData, pageTitle ,buttonText, children }) => {
           onBlur={handleBlur}  
         />
         {errors.title && touched.title && <p className="text-red-800">{errors.title}</p> }
-        <h3 className='text-xl'>Price</h3>
+        <h3 className='text-xl text-white'>Price</h3>
         <input 
           type="text" 
           id='price'
@@ -27,16 +27,27 @@ export const VillaUI = ({ formData, pageTitle ,buttonText, children }) => {
           onBlur={handleBlur}  
         />
         {errors.price && touched.price && <p className="text-red-800">{errors.price}</p> }
-        <h3 className='text-xl'>Description</h3>
+        <h3 className='text-xl text-white'>Description</h3>
         <textarea 
           type="text" 
+          rows={10}
+          cols={40}
           id='description'
           value={values.description}
           onChange={handleChange}
           onBlur={handleBlur}  
         />
         {errors.description && touched.description && <p className="text-red-800">{errors.description}</p> }
-        <h3 className='text-xl'>Number Of Beds</h3>
+        <h3 className='text-xl text-white'>Address</h3>
+        <input 
+          type="text" 
+          id='address'
+          value={values.address}
+          onChange={handleChange}
+          onBlur={handleBlur}  
+        />
+        {errors.address && touched.address && <p className="text-red-800">{errors.address}</p> }
+        <h3 className='text-xl text-white'>Number Of Beds</h3>
         <input 
           type="text" 
           id='beds'
@@ -45,7 +56,7 @@ export const VillaUI = ({ formData, pageTitle ,buttonText, children }) => {
           onBlur={handleBlur}  
         />
         {errors.beds && touched.beds && <p className="text-red-800">{errors.beds}</p> }
-        <h3 className='text-xl'>Number Of Baths</h3>
+        <h3 className='text-xl text-white'>Number Of Baths</h3>
         <input 
           type="text" 
           id='baths'
@@ -54,7 +65,7 @@ export const VillaUI = ({ formData, pageTitle ,buttonText, children }) => {
           onBlur={handleBlur}  
         />
         {errors.baths && touched.baths && <p className="text-red-800">{errors.baths}</p> }
-        <h3 className='text-xl'>Size Of The Villa</h3>
+        <h3 className='text-xl text-white'>Size Of The Villa</h3>
         <input 
           type="text" 
           id='size'
@@ -62,21 +73,31 @@ export const VillaUI = ({ formData, pageTitle ,buttonText, children }) => {
           onChange={handleChange}
           onBlur={handleBlur}  
         />
+        <label className="flex gap-2 my-2 text-white">
+          <input
+            type="checkbox"
+            name="featured"
+            checked={values.featured}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+          Add Villa To Featured Properties
+        </label>
         {errors.size && touched.size && <p className="text-red-800">{errors.size}</p> }
-        <h3 className='text-xl'>Featured Image</h3>
+        <h3 className='text-xl text-white'>Featured Image</h3>
         <input 
-          id='featured'
+          id='featured_image'
           ref={featuredRef}
           accept="image/png, image/jpeg"
           type="file" 
           onChange={(e) => {
-            setFieldValue('featured', Array.from(e.target.files));  //setFieldValue can only be accessed when triggred onSubmit
+            setFieldValue('featured_image', Array.from(e.target.files));  //setFieldValue can only be accessed when triggred onSubmit
           }}
         />
-        {errors.featured && <p className="text-red-800">{errors.featured}</p> }
-        <h3 className='text-xl mt-5'>Villa Carousel Images</h3>
+        {errors.featured_image && <p className="text-red-800">{errors.featured_image}</p> }
+        <h3 className='text-xl mt-5 text-white'>Villa Carousel Images</h3>
         {children && 
-          <div className='flex gap-5 mb-3'>
+          <div className='flex gap-5 mb-3 text-white'>
             {children[0]}
           </div>
         }
@@ -91,7 +112,7 @@ export const VillaUI = ({ formData, pageTitle ,buttonText, children }) => {
           }}
         />
         {errors.carousel && <p className="text-red-800">{errors.carousel}</p> }
-        <h3 className='text-xl mt-5'>Villa Gallery Images</h3>
+        <h3 className='text-xl mt-5 text-white'>Villa Gallery Images</h3>
         {children && 
           <div className='flex gap-5 mb-3'>
             {children[1]}
@@ -109,7 +130,7 @@ export const VillaUI = ({ formData, pageTitle ,buttonText, children }) => {
         />
         {errors.gallery && <p className="text-red-800">{errors.gallery}</p> }
         {uploadStatus && <h3 className='text-lime-600'>{uploadStatus}</h3>}
-        <button disabled={isSubmitting || !isValid} type='submit' className='border border-blue-400 mt-5'>{buttonText}</button>
+        <button disabled={isSubmitting || !isValid} type='submit' className='border border-blue-400 mt-5 text-white'>{buttonText}</button>
 
       </form>
     </div>

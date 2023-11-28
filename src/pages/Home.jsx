@@ -1,9 +1,13 @@
-import React from 'react'
+import { useHome } from '../hooks/useHome'
+import { HomeUI } from '../components/HomeUI'
 
 export const Home = () => {
+
+  const {featuredVillas} = useHome();
+  
   return (
-    <div className='h-screen'>
-      <h1>This is home page</h1>
-    </div>
+    <HomeUI
+      featuredVillas = {featuredVillas}
+    />
   )
 }

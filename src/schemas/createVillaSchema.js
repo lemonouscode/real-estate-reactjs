@@ -38,10 +38,11 @@ export const createVillaSchema = (featuredRef, caroRef, gallRef) => {
     title: yup.string().min(2).required("Title is required"),
     price: yup.number().min(2).required("Price is required"),
     description: yup.string().required("Description is required"),
+    address: yup.string().min(2).required("Address is required"),
     beds: yup.number().min(1).required("Number of beds is required"),
     baths: yup.number().min(1).required("Number of baths is required"),
     size: yup.number().min(1).required("Size is required"),
-    featured: yup.mixed()
+    featured_image: yup.mixed().required('required')
     .test("is-file-too-big", "File exceeds 10MB", () => {
       const files = featuredRef?.current?.files;
       return validateFileSize(files);
@@ -54,7 +55,7 @@ export const createVillaSchema = (featuredRef, caroRef, gallRef) => {
         return validateFileType(files);
       }
     ),
-    carousel: yup.mixed()
+    carousel: yup.mixed().required('required')
     .test("is-file-too-big", "File exceeds 10MB", () => {
       const files = caroRef?.current?.files;
       return validateFileSize(files);
@@ -67,7 +68,7 @@ export const createVillaSchema = (featuredRef, caroRef, gallRef) => {
         return validateFileType(files);
       }
     ),
-    gallery: yup.mixed()
+    gallery: yup.mixed().required('required')
     .test("is-file-too-big", "File exceeds 10MB", () => {
       const files = gallRef?.current?.files;
       return validateFileSize(files);

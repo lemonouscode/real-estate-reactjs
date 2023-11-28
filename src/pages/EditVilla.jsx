@@ -2,15 +2,29 @@ import useVilla from '../hooks/useVilla'
 import { VillaUI } from '../components/VillaUI'
 import { useParams } from 'react-router-dom';
 import villaApi from '../services/VillaApi';
+import { useEffect, useState } from 'react';
 
 export const EditVilla = () => {
 
     const { villaSlug } = useParams();
+    const [editInitialValues, setEditInitialValues] = useState("");
 
     const handleUpdateVilla = async (data)=>{
       return await villaApi.updateVilla(villaSlug, data)
     }
 
+    const handleInitialValues = async ()=>{
+      const resp = await villaApi.getVillaByName(villaSlug);
+      setEditInitialValues(resp);
+    }
+
+    useEffect(()=>{
+      handleInitialValues();
+    },[])
+
+    useEffect(()=>{
+      // console.log(editInitialValues)
+    },[editInitialValues])
 
     const {
         values,
@@ -23,10 +37,10 @@ export const EditVilla = () => {
         handleSubmit,
         setFieldValue,
         uploadStatus,
-        feauturedRef,
+        featuredRef,
         carouselRef,
         galleryRef,
-    } = useVilla(handleUpdateVilla, true);  // Here goes second param to true to specify we are using hook for edit villa page
+    } = useVilla(handleUpdateVilla, true, editInitialValues);  // Here goes second param to true to specify we are using hook for edit villa page
 
 
     const EditVillaRadio = ({fieldName})=>{
@@ -72,7 +86,7 @@ export const EditVilla = () => {
           handleSubmit,
           setFieldValue,
           uploadStatus,
-          feauturedRef,
+          featuredRef,
           carouselRef,
           galleryRef, 
         }}

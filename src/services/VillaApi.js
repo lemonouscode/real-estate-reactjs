@@ -54,6 +54,27 @@ class VillaApi extends HttpService{
       }
     }
 
+    async getFeaturedVillas(){
+      try{
+        const response = await this.client.get('/featured_villas/')
+
+        return response.data;
+      }catch(err){
+        console.error('Error uploading images:', err);
+      }
+    }
+
+
+    async deleteVilla($slug){
+      try{
+        const response = await this.client.delete('/villa/'+$slug)
+
+        return response.data;
+      }catch(err){
+        console.error('Error uploading images:', err);
+      }
+    }
+
 }
 
 const villaApi = new VillaApi();

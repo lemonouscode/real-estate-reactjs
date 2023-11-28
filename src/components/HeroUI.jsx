@@ -12,7 +12,7 @@ export const HeroUI = ({imageUrl , title, subTitle}) => {
             }}>
         </div>
         <div className='flex flex-col z-10 text-white text-center gap-3'>
-            <h1 className='text-5xl'>{title}</h1>
+            <h1 className='text-6xl font-bold'>{title}</h1>
             <p className=''>{subTitle}</p>
         </div>
     </div>

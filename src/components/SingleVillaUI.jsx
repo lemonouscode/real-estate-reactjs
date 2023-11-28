@@ -1,0 +1,72 @@
+import { SyncedCarousel } from "../components/SyncedCarousel";
+import { FaBed } from "react-icons/fa";
+import { FaShower } from "react-icons/fa";
+import { MyButton } from "../components/MyButton";
+import { ContactForm } from "../components/ContactForm";
+import { GalleryGrid } from "../components/GalleryGrid";
+
+export const SingleVillaUI = ({villaDetails,contactSectionRef,scrollToContactSection,displayTextWithLineBreaks }) => {
+    return (
+        <div className="overflow-x-hidden">
+            <section className="">
+                {Object.keys(villaDetails).length > 0 &&
+                    <SyncedCarousel villaDetails={villaDetails} />
+                }
+            </section>
+            <section className="pt-[50px] flex flex-col gap-5 w-full h-full justify-center items-center">
+                <h1 className="text-6xl font-bold">{villaDetails.title}</h1>
+                <p className="text-2xl uppercase">{villaDetails.address}</p>
+                <div className="flex gap-3">    
+                    <div className='flex w-full gap-5 px-[5%] mb-3 '>
+                      <div className='flex items-center gap-2'>
+                          <p className='z-10 text-xl'>{villaDetails.beds}</p>
+                          <FaBed className='z-10 text-2xl mt-1 ' />
+                      </div>
+                      
+                      <div className='flex items-center gap-2'>
+                          <p className='z-10 text-xl'>{villaDetails.baths}</p>
+                          <FaShower className='z-10 text-2xl mt-1 ' />
+                      </div>
+                      <div className='flex items-center gap-2'>
+                          <p className='z-10 text-xl'>{villaDetails.size}</p>
+                          <p className='z-10 text-xl mb-1 '>m²</p>
+                      </div>
+                    </div>
+    
+                </div>
+                <div className="max-w-2xl mb-5 text-center">{villaDetails && displayTextWithLineBreaks()}</div>
+    
+                <div className="flex gap-5 mb-10">
+                <button onClick={scrollToContactSection}>
+                  <MyButton buttonText="Contact Us" black={true} />
+                </button>
+                  <MyButton buttonText="Save Villa" black={true} />
+                </div>
+    
+                <div className="w-full">
+                    <iframe src={`https://www.google.com/maps/embed/v1/place?q=${villaDetails.address}&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8`}  
+                      height="450" 
+                      style={{border:0, width:"100%"}} 
+                      allowFullScreen="" 
+                      aria-hidden="false" 
+                      >
+                    </iframe>
+                </div>
+            </section>
+    
+            <section ref={contactSectionRef} className="pt-[60px]">
+              <div className="flex flex-col max-w-[800px] mx-auto gap-5 mb-5">
+                <h2 className="text-4xl uppercase mx-auto">Contact Us</h2>
+                <p className="text-xl text-center">We would love to hear from you and help you find your dream property. Please fill the form below and one of our agents will connect with you shortly.</p>
+              </div>
+              <ContactForm />
+            </section>
+    
+            <section className="pt-[60px]">
+            {Object.keys(villaDetails).length > 0 &&
+                <GalleryGrid villaDetails={villaDetails} />
+            }
+            </section>
+        </div>
+      )
+}

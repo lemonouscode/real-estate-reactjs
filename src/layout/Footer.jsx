@@ -2,6 +2,6 @@ import React from 'react'
 
 export const Footer = () => {
   return (
-    <div>Footer</div>
+    <div className='text-white mx-auto text-center'>Copyright © 2023 - Somedev.com</div>
   )
 }
