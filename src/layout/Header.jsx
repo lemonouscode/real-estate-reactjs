@@ -7,6 +7,7 @@ export const Header = () => {
       <Link to="/create-villa">Add Villa</Link>
       <Link to="/villas">Villas</Link>
       <Link to="/about">About</Link>
+      <Link to="/contact">Contact</Link>
     </div>
   )
 }

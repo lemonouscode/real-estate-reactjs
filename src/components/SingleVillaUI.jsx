@@ -2,12 +2,13 @@ import { SyncedCarousel } from "../components/SyncedCarousel";
 import { FaBed } from "react-icons/fa";
 import { FaShower } from "react-icons/fa";
 import { MyButton } from "../components/MyButton";
-import { ContactForm } from "../components/ContactForm";
 import { GalleryGrid } from "../components/GalleryGrid";
+import { ContactForm } from "../components/ContactForm"
 
-export const SingleVillaUI = ({villaDetails,contactSectionRef,scrollToContactSection,displayTextWithLineBreaks }) => {
+
+export const SingleVillaUI = ({villaDetails,contactSectionRef,scrollToContactSection,displayTextWithLineBreaks, formData }) => {
     return (
-        <div className="overflow-x-hidden">
+        <div className="overflow-x-hidden text-white">
             <section className="">
                 {Object.keys(villaDetails).length > 0 &&
                     <SyncedCarousel villaDetails={villaDetails} />
@@ -38,9 +39,9 @@ export const SingleVillaUI = ({villaDetails,contactSectionRef,scrollToContactSec
     
                 <div className="flex gap-5 mb-10">
                 <button onClick={scrollToContactSection}>
-                  <MyButton buttonText="Contact Us" black={true} />
+                  <MyButton buttonText="Contact Us" />
                 </button>
-                  <MyButton buttonText="Save Villa" black={true} />
+                  <MyButton buttonText="Save Villa" />
                 </div>
     
                 <div className="w-full">
@@ -59,7 +60,7 @@ export const SingleVillaUI = ({villaDetails,contactSectionRef,scrollToContactSec
                 <h2 className="text-4xl uppercase mx-auto">Contact Us</h2>
                 <p className="text-xl text-center">We would love to hear from you and help you find your dream property. Please fill the form below and one of our agents will connect with you shortly.</p>
               </div>
-              <ContactForm />
+              <ContactForm formData={formData} />
             </section>
     
             <section className="pt-[60px]">

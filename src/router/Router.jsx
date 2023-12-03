@@ -5,6 +5,7 @@ import { EditVilla } from "../pages/EditVilla"
 import { Villas } from "../pages/Villas"
 import { About } from "../pages/About"
 import { SingleVilla } from "../pages/SingleVilla"
+import { Contact } from "../pages/Contact"
 
 export const Router = () => {
   return (
@@ -14,8 +15,9 @@ export const Router = () => {
         <Route path="/create-villa" element={<CreateVilla/>}/>
         <Route path="/edit-villa/:villaSlug" element={<EditVilla />} />
         <Route path="villas" element={<Villas/>} />
-        <Route path="about" element={<About/>} />
+        <Route path="/about" element={<About/>} />
         <Route path="villas/:villaSlug" element={<SingleVilla/>} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </div>
   )
