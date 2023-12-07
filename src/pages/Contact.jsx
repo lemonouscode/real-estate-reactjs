@@ -11,11 +11,13 @@ export const Contact = () => {
         isValid,
         handleBlur,
         handleChange,
-        handleSubmit} = useContact();
+        handleSubmit,
+        status
+      } = useContact();
 
     
   return (
-    <section className="pt-[75px] pb-[75px]">
+    <section className="pt-[75px] pb-[75px] px-[5%] min-h-screen">
         <ContactForm formData={{
             values,
             errors,
@@ -27,6 +29,7 @@ export const Contact = () => {
             handleSubmit,
         }} 
         />
+        {status && <p className="text-green-800 text-center text-2xl font-bold pt-5">{status}</p> }
     </section>
   )
 }

@@ -3,7 +3,7 @@ import propertyImage from "../assets/Images/property1.jpeg"
 import { VillasDetail } from '../components/VillasDetail';
 import { Link } from 'react-router-dom';
 
-export const VillasUI = ({villas, handleRemoveVilla}) => {
+export const VillasUI = ({villas, handleRemoveVilla, isAdmin}) => {
   
     
     return (
@@ -25,17 +25,17 @@ export const VillasUI = ({villas, handleRemoveVilla}) => {
                             </div>
                             <VillasDetail villa={villa} cutUrl={true} />
                         </Link>
-                        <div className='flex gap-5 mt-5'>
-                          <Link className='text-white px-5 py-2 border border-white' to={`/edit-villa/${villa.slug}`}>
-                              Edit Villa
-                          </Link>
-                          <button className='text-white px-5 py-2 border border-white' onClick={() => handleRemoveVilla(villa.slug)}>
-                            Remove Villa
-                          </button>
-                        </div>
+                        {isAdmin &&
+                            <div className='flex gap-5 mt-5'>
+                                <Link className='text-white px-5 py-2 border border-white' to={`/edit-villa/${villa.slug}`}>
+                                    Edit Villa
+                                </Link>
+                                <button className='text-white px-5 py-2 border border-white' onClick={() => handleRemoveVilla(villa.slug)}>
+                                    Remove Villa
+                                </button>
+                            </div>
+                        }
                     </div>
-                    
-                    
                 ))}
             </div>
         </div>

@@ -22,10 +22,6 @@ export const EditVilla = () => {
       handleInitialValues();
     },[])
 
-    useEffect(()=>{
-      // console.log(editInitialValues)
-    },[editInitialValues])
-
     const {
         values,
         errors,

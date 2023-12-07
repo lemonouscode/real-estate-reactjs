@@ -1,8 +1,11 @@
 import { useFormik } from "formik"
 import { submitContactFormSchema } from "../schemas/submitContactFormSchema"
 import contactApi from "../services/ContactApi"
+import { useState } from "react"
 
 export const useContact = () => {
+
+    const [status, setStatus] = useState("");
 
     const onSubmit = async (values) =>{
 
@@ -13,7 +16,8 @@ export const useContact = () => {
         formData.append('message',values.message );
 
         // Submitting form data to backend
-        await contactApi.submitContact(formData);
+        const resp = await contactApi.submitContact(formData);
+        setStatus(resp.message)
     }
 
     const {
@@ -43,6 +47,7 @@ export const useContact = () => {
         isValid,
         handleBlur,
         handleChange,
-        handleSubmit
+        handleSubmit,
+        status
     }
 }
