@@ -65,13 +65,44 @@ class VillaApi extends HttpService{
     }
 
 
-    async deleteVilla($slug){
+    async deleteVilla(slug){
       try{
-        const response = await this.client.delete('/villa/'+$slug)
+        const response = await this.client.delete('/villa/'+slug)
 
         return response.data;
       }catch(err){
         console.error('Error uploading images:', err);
+      }
+    }
+
+    async getSavedVillas(userID){
+      try{
+        const response = await this.client.get('/saved-villas/'+userID)
+
+        return response.data;
+      }catch(err){
+        console.error('Error fetching saved villas', err);
+      }
+    }
+
+
+    async saveVilla(data){
+      try{
+        const response = await this.client.post('/save-villa/',data)
+
+        return response.data;
+      }catch(err){
+        console.error('Error fetching saved villas', err);
+      }
+    }
+
+    async unSaveVilla(id){
+      try{
+        const response = await this.client.delete('/saved-villa/' + id)
+
+        return response.data;
+      }catch(err){
+        console.error('Error fetching saved villas', err);
       }
     }
 

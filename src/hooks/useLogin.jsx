@@ -9,6 +9,7 @@ export const useLogin = () => {
     const [token, setToken] = useState("");
     const [isAdmin, setIsAdmin] = useState("");
     const [name, setName] = useState("");
+    const [userId, setUserId] = useState("");
 
     const onSubmit = async (values) =>{
   
@@ -26,6 +27,7 @@ export const useLogin = () => {
         setToken(res.token)
         setIsAdmin(res.is_admin)
         setName(res.name)
+        setUserId(res.id)
       }
   }
   
@@ -59,6 +61,7 @@ export const useLogin = () => {
       loginStatus,
       token,
       isAdmin,
-      name
+      name,
+      userId
   }
 }

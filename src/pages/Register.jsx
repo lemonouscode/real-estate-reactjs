@@ -1,12 +1,13 @@
-import { useEffect } from "react";
-import { LoginFormUI } from "../components/LoginFormUI"
-import { useLogin } from "../hooks/useLogin"
-import { useNavigate} from 'react-router-dom';
+import { useEffect } from "react"
 import { useDispatch } from 'react-redux';
 import { loginUser } from "../redux/authSlice";
+import { useNavigate} from 'react-router-dom';
 
-export const Login = () => {
+import { RegisterFormUI } from "../components/RegisterFormUI";
+import { useRegister } from "../hooks/useRegister";
 
+export const Register = () => {
+    
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -19,14 +20,14 @@ export const Login = () => {
     handleBlur,
     handleChange,
     handleSubmit,
-    loginStatus,
+    registerStatus,
     token,
     isAdmin,
     name,
     userId
-    } = useLogin();
+    } = useRegister();
 
-  
+
   useEffect(()=>{
     if(token.length > 0){
       const payload = {
@@ -48,21 +49,20 @@ export const Login = () => {
     }
   },[token])
 
-  
+
   return (
-    <section className="pt-[75px]">
-        <LoginFormUI 
-          formData={{
-              values,
-              errors,
-              touched,
-              isSubmitting,
-              isValid,
-              handleBlur,
-              handleChange,
-              handleSubmit,
-          }}
-          loginStatus={loginStatus}
+    <section className="pt-[75px] px-[5%] min-h-screen">
+        <RegisterFormUI formData={{ 
+                values,
+                errors,
+                touched,
+                isSubmitting,
+                isValid,
+                handleBlur,
+                handleChange,
+                handleSubmit,
+            }}
+            registerStatus={registerStatus}
         />
     </section>
   )

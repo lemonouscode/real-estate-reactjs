@@ -7,7 +7,9 @@ import { About } from "../pages/About"
 import { SingleVilla } from "../pages/SingleVilla"
 import { Contact } from "../pages/Contact"
 import { Login } from "../pages/Login"
+import { Register } from "../pages/Register"
 import { Dashboard } from "../pages/Dashboard"
+import { Profile } from "../pages/Profile"
 import { AdminProtectedRoute } from "./AdminProtectedRoute"
 import { UserProtectedRoute } from "./UserProtectedRoute"
 
@@ -17,12 +19,12 @@ export const Router = () => {
       <Routes>
         <Route path="/"  element={<Home/>}/>
         <Route path="villas" element={<Villas/>} />
-        
         <Route path="villas/:villaSlug" element={<SingleVilla/>} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/login" element={<Login/>} />
         <Route path="/about" element={<About/>} />
-        
+        <Route path="/login" element={<Login/>} />
+        <Route path="/register" element={<Register/>} />
+
         <Route element={<AdminProtectedRoute redirectPath="/login" noAdminRedirectPath="/" />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/create-villa" element={<CreateVilla/>}/>
@@ -30,7 +32,7 @@ export const Router = () => {
         </Route>
 
         <Route element={<UserProtectedRoute />}>
-          
+          <Route path="/profile" element={<Profile/>} />
         </Route>
 
       </Routes>

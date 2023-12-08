@@ -15,7 +15,7 @@ export const VillasUI = ({villas, handleRemoveVilla, isAdmin}) => {
             <div className='overflow-hidden grid grid-cols-3 gap-4'>
                 {villas && villas.map((villa) => (
                     <div key={villa.id}>
-                        <Link className='flex relative h-[40vh] w-full' to={villa.slug}>
+                        <div className='flex relative h-[40vh] w-full' to={villa.slug}>
                             <div className="w-full h-full absolute" style={{
                                     backgroundImage: `url('${villa.featured_image}')`,
                                     backgroundSize: 'cover',
@@ -23,8 +23,8 @@ export const VillasUI = ({villas, handleRemoveVilla, isAdmin}) => {
                                     backgroundRepeat: 'no-repeat'
                                 }}>
                             </div>
-                            <VillasDetail villa={villa} cutUrl={true} />
-                        </Link>
+                            <VillasDetail villa={villa} urlPrefix="/villas/" />
+                        </div>
                         {isAdmin &&
                             <div className='flex gap-5 mt-5'>
                                 <Link className='text-white px-5 py-2 border border-white' to={`/edit-villa/${villa.slug}`}>

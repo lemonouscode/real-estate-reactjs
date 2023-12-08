@@ -19,7 +19,7 @@ export const HomeUI = ({featuredVillas}) => {
                 <h1 className='text-6xl uppercase'>The Lorem Ipsum team</h1>
                 <p className='text-xl mt-2 mb-2'>Ranked #1 Team in Jupiter servicing homes from Jupiter Island - Palm Beach Island, FL</p>
                 <Link to="/villas">
-                <MyButton buttonText="View Villas" />
+                    <MyButton buttonText="View Villas" />
                 </Link>
             </div>
             </section>
@@ -38,7 +38,7 @@ export const HomeUI = ({featuredVillas}) => {
                             style={{ objectFit: 'cover', width: '100%', height: '100%' }}
                         />
 
-                        <VillasDetail villa={villa} />
+                        <VillasDetail villa={villa} urlPrefix="/villas/" />
                     </div>
                     
                     ))}

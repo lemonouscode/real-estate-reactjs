@@ -18,15 +18,18 @@ export const Header = () => {
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
         {!logedUser &&
-          <Link to="/login">Login</Link>
+          <>
+            <Link to="/login">Login</Link>
+            <Link to="/register">Register</Link>
+          </>
         }
       </div>
       {logedUser &&
         <div className="absolute right-[5%] flex gap-5">
           {isAdmin == 1 ?
-            <Link className="text-orange-950" to="/dashboard">Dashboard</Link>
+            <Link className="text-amber-700" to="/dashboard">Dashboard</Link>
           :
-            <Link className="text-orange-950" to="/profile">Profile</Link>
+            <Link className="text-amber-700" to="/profile">Profile</Link>
           }
           <button onClick={()=>{dispatch(logoutUser())}}>Logout</button>
         </div>

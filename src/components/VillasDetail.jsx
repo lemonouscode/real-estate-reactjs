@@ -2,13 +2,13 @@ import { FaBed } from "react-icons/fa";
 import { FaShower } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-export const VillasDetail = ({villa, cutUrl}) => {
+export const VillasDetail = ({villa, urlPrefix}) => {
 
   return (
     <div className='flex flex-col w-full text-white absolute bottom-0 gap-2'>
         <div className=' bg-black opacity-60 w-full h-full absolute'></div>
         <div className="absolute bottom-2 right-[5%]">
-        <Link to={cutUrl ? villa.slug : `villas/${villa.slug}`}>
+        <Link to={urlPrefix + villa.slug}>
             <div className='
             border border-white text-white cursor-pointer uppercase px-4 py-2 bg-transparent
             hover:text-myBrown hover:bg-white transition-all duration-300 

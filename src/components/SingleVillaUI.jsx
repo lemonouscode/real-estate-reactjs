@@ -6,7 +6,16 @@ import { GalleryGrid } from "../components/GalleryGrid";
 import { ContactForm } from "../components/ContactForm"
 
 
-export const SingleVillaUI = ({villaDetails,contactSectionRef,scrollToContactSection,displayTextWithLineBreaks, formData }) => {
+export const SingleVillaUI = ({
+  villaDetails,
+  contactSectionRef,
+  scrollToContactSection,
+  displayTextWithLineBreaks, 
+  formData, 
+  handleSaveVilla, 
+  savedVilla,
+  isAdmin
+}) => {
     return (
         <div className="overflow-x-hidden text-white">
             <section className="">
@@ -38,12 +47,16 @@ export const SingleVillaUI = ({villaDetails,contactSectionRef,scrollToContactSec
                 <div className="max-w-2xl mb-5 text-center">{villaDetails && displayTextWithLineBreaks()}</div>
     
                 <div className="flex gap-5 mb-10">
-                <button onClick={scrollToContactSection}>
-                  <MyButton buttonText="Contact Us" />
-                </button>
-                  <MyButton buttonText="Save Villa" />
+                  <button onClick={scrollToContactSection}>
+                    <MyButton buttonText="Contact Us" />
+                  </button>
+                  {!savedVilla && !isAdmin &&
+                    <button onClick={handleSaveVilla}>
+                      <MyButton buttonText="Save Villa" />
+                    </button>
+                  }
                 </div>
-    
+                <p className="text-green-600 text-3xl pb-5">{savedVilla}</p>
                 <div className="w-full">
                     <iframe src={`https://www.google.com/maps/embed/v1/place?q=${villaDetails.address}&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8`}  
                       height="450" 

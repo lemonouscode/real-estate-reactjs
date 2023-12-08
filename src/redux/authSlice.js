@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   userLogged: localStorage.getItem('jwt_token') || null,
   isAdmin: null,
-  name: null
+  name: null,
+  userId: null
 };
 
 
@@ -14,6 +15,7 @@ const authSlice = createSlice({
   reducers: {
     loginUser: (state, action) => {
       state.isAdmin = action.payload.isAdmin;
+      state.userId = action.payload.userId;
       state.name = action.payload.name;
       localStorage.setItem('jwt_token', action.payload.token); 
       state.userLogged = action.payload.token;
@@ -32,5 +34,6 @@ export const { loginUser, logoutUser } = authSlice.actions;
 export const selectUserLogged = state => state.auth.userLogged;
 export const selectIsAdmin = (state) => state.auth.isAdmin;
 export const selectName = (state) => state.auth.name;
+export const selectID = (state) => state.auth.userId;
 
 export default authSlice.reducer;
