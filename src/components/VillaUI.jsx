@@ -129,7 +129,7 @@ export const VillaUI = ({ formData, pageTitle ,buttonText, children }) => {
           }}
         />
         {errors.gallery && <p className="text-red-800">{errors.gallery}</p> }
-        {uploadStatus && <h3 className='text-lime-600'>{uploadStatus}</h3>}
+        {uploadStatus && <h3 className='text-lime-600'>{uploadStatus.message}</h3>}
         <button disabled={isSubmitting || !isValid} type='submit' className='border border-blue-400 mt-5 text-white'>{buttonText}</button>
 
       </form>

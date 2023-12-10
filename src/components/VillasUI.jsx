@@ -4,7 +4,6 @@ import { VillasDetail } from '../components/VillasDetail';
 import { Link } from 'react-router-dom';
 
 export const VillasUI = ({villas, handleRemoveVilla, isAdmin}) => {
-  
     
     return (
         <div className='py-20 flex flex-col gap-5'>

@@ -1,26 +1,40 @@
 import useVilla from '../hooks/useVilla'
 import { VillaUI } from '../components/VillaUI'
 import { useParams } from 'react-router-dom';
-import villaApi from '../services/VillaApi';
 import { useEffect, useState } from 'react';
+import { useUpdateVillaMutation } from '../redux/features/villaApi';
+import { useGetVillasQuery, useGetVillaBySlugQuery } from '../redux/features/villaApi';
 
 export const EditVilla = () => {
-
+  
     const { villaSlug } = useParams();
     const [editInitialValues, setEditInitialValues] = useState("");
+    
 
-    const handleUpdateVilla = async (data)=>{
-      return await villaApi.updateVilla(villaSlug, data)
-    }
+    const [updateVilla] = useUpdateVillaMutation();
 
-    const handleInitialValues = async ()=>{
-      const resp = await villaApi.getVillaByName(villaSlug);
-      setEditInitialValues(resp);
+    const { data, refetch } = useGetVillasQuery();
+    const { data:resp, refetch:villaSlugRefetch } = useGetVillaBySlugQuery(villaSlug);
+
+    const handleRefetch = () => {
+      refetch();
+    };
+
+    const handleUpdateVilla = async (myData)=>{
+      const {data} = await updateVilla({slug:villaSlug, data: myData});
+
+      // Update villas cards
+      handleRefetch();
+      return data;
     }
 
     useEffect(()=>{
-      handleInitialValues();
-    },[])
+      villaSlugRefetch();
+    },[villaSlug])
+
+    useEffect(()=>{
+      setEditInitialValues(resp);
+    },[resp])
 
     const {
         values,

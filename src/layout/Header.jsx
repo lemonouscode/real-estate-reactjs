@@ -4,11 +4,12 @@ import { useSelector } from "react-redux";
 import { logoutUser } from "../redux/authSlice";
 import { useDispatch } from "react-redux";
 
+
 export const Header = () => {
 
   const logedUser = useSelector(selectUserLogged);
   const isAdmin = useSelector(selectIsAdmin);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   return (
     <div className="absolute top-0 left-0 z-[2000] flex w-full text-white pt-2 font-bold px-[5%]">

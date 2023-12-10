@@ -1,23 +1,21 @@
 import { useState, useEffect } from 'react';
-import VillaApi from "../services/VillaApi"
+import { useGetVillasQuery, useDeleteVillaMutation } from '../redux/features/villaApi';
 
 export const useVillas = () => {
   
   const [villas, setVillas] = useState([]);
 
-  const handleFetchVillas = async () => {
-    const { villas } = await VillaApi.getVillas();
-    setVillas(villas);
-  };
-
+  const {data, refetch} = useGetVillasQuery();
+  const [deleteVilla] = useDeleteVillaMutation();
+  
   useEffect(() => {
-    handleFetchVillas();
-  }, []);
+    setVillas(data?.villas)
+  }, [data]);
 
 
-  const handleRemoveVilla = async ($slug)=>{
-    await VillaApi.deleteVilla($slug);
-    handleFetchVillas();
+  const handleRemoveVilla = async (slug)=>{
+    await deleteVilla(slug);
+    refetch();
   }
 
   return { villas, handleRemoveVilla }

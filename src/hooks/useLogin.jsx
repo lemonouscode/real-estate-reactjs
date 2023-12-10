@@ -1,9 +1,11 @@
 import { useFormik } from "formik"
 import { loginSchema } from "../schemas/loginSchema"
-import usersApi from "../services/UsersApi"
 import { useState } from "react"
+import { useLoginMutation } from "../redux/features/authApi"
 
 export const useLogin = () => {
+
+    const [login] = useLoginMutation();
 
     const [loginStatus, setLoginStatus] = useState("");
     const [token, setToken] = useState("");
@@ -19,7 +21,7 @@ export const useLogin = () => {
       formData.append('password',values.password );
   
       // Submitting form data to backend
-      const res = await usersApi.loginUser(formData);
+      const {data: res} = await login(formData);
       if(res.status == "error"){
         setLoginStatus(res.message)
       }

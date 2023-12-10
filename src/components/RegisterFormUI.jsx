@@ -53,7 +53,7 @@ export const RegisterFormUI = ({formData, registerStatus}) => {
         {errors.password && touched.password && <p className="text-red-800">{errors.password}</p> }
         {registerStatus && <p className="text-red-800">{registerStatus}</p> }
         <button disabled={isSubmitting || !isValid} type='submit'>
-            <MyButton buttonText="Login" />
+            <MyButton buttonText="Register" />
         </button>
     </form>
   )

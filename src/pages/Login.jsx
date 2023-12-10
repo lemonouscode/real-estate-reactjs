@@ -50,7 +50,7 @@ export const Login = () => {
 
   
   return (
-    <section className="pt-[75px]">
+    <section className="pt-[75px] min-h-screen">
         <LoginFormUI 
           formData={{
               values,

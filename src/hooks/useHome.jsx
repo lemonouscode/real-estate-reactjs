@@ -1,18 +1,22 @@
 import { useEffect, useState } from 'react'
-import villaApi from '../services/VillaApi'
+import { useGetFeaturedVillasQuery } from '../redux/features/villaApi';
 
 export const useHome = () => {
 
   const [featuredVillas, setFeaturedVillas] = useState("");
 
+  const {data, refetch} = useGetFeaturedVillasQuery();
+
   const handleGetFeaturedVillas = async () =>{
-    const {Featured_Villas} = await villaApi.getFeaturedVillas();
-    setFeaturedVillas(Featured_Villas)
+    if(data){
+      const {Featured_Villas} = data;
+      setFeaturedVillas(Featured_Villas)
+    }
   }
 
   useEffect(()=>{
     handleGetFeaturedVillas();
-  },[])
+  },[data])
 
   return (
     {

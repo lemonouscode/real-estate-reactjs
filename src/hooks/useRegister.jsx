@@ -1,9 +1,11 @@
 import { useFormik } from "formik"
 import { registerSchema } from "../schemas/registerSchema"
-import usersApi from "../services/UsersApi";
 import { useState } from "react"
+import { useRegisterMutation } from "../redux/features/authApi";
 
 export const useRegister = () => {
+
+  const [register] = useRegisterMutation();
 
   const [registerStatus, setRegisterStatus] = useState("");
   const [token, setToken] = useState("");
@@ -20,7 +22,7 @@ export const useRegister = () => {
     formData.append('password',values.password );
 
     // Submitting form data to backend
-    const res = await usersApi.registerUser(formData);
+    const {data: res} = await register(formData);
     if(res.status == "error"){
         setRegisterStatus(res.message)
     }

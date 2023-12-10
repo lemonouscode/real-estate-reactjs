@@ -1,12 +1,14 @@
 import useVilla from '../hooks/useVilla';
 import { VillaUI } from '../components/VillaUI';
-import villaApi from '../services/VillaApi';
+import { useCreateVillaMutation } from '../redux/features/villaApi';
 
 export const CreateVilla = () => {
 
-  
-  const handleUpdateVilla = async (data)=>{
-    return await villaApi.createVilla(data)
+  const [createVilla] = useCreateVillaMutation();
+
+  const handleUpdateVilla = async (myData)=>{
+    const {data} = await createVilla(myData)
+    return data;
   }
 
   const {

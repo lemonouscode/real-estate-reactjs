@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react"
-import contactApi from "../services/ContactApi"
+import { useGetContactQuery } from "../redux/features/contactApi";
 
 export const useDashboard = () => {
 
   const [contacts, setContacts] = useState("");
+  const {data} = useGetContactQuery();
 
   const handleGetContacts = async ()=>{
-        
-    const resp = await contactApi.getContact();
-    setContacts(resp.SubmitedContactForms)
+    const resp = data.SubmitedContactForms;
+    setContacts(resp)
   }
 
-  // fetch all contacts
   useEffect(()=>{
     handleGetContacts();
-  },[])
+  },[data])
 
   return {
     contacts

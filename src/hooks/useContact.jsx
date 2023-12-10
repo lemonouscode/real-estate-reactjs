@@ -1,11 +1,12 @@
 import { useFormik } from "formik"
 import { submitContactFormSchema } from "../schemas/submitContactFormSchema"
-import contactApi from "../services/ContactApi"
 import { useState } from "react"
+import { useSubmitContactMutation } from "../redux/features/contactApi"
 
 export const useContact = () => {
 
     const [status, setStatus] = useState("");
+    const [submitForm] = useSubmitContactMutation();
 
     const onSubmit = async (values) =>{
 
@@ -16,8 +17,8 @@ export const useContact = () => {
         formData.append('message',values.message );
 
         // Submitting form data to backend
-        const resp = await contactApi.submitContact(formData);
-        setStatus(resp.message)
+        const {data} = await submitForm(formData);
+        setStatus(data.message)
     }
 
     const {
