@@ -24,7 +24,7 @@ export const SingleVillaUI = ({
                 }
             </section>
             <section className="pt-[50px] flex flex-col gap-5 w-full h-full justify-center items-center">
-                <h1 className="text-6xl font-bold">{villaDetails.title}</h1>
+                <h1 className="text-6xl font-bold max-md:text-4xl">{villaDetails.title}</h1>
                 <p className="text-2xl uppercase">{villaDetails.address}</p>
                 <div className="flex gap-3">    
                     <div className='flex w-full gap-5 px-[5%] mb-3 '>
@@ -46,7 +46,7 @@ export const SingleVillaUI = ({
                 </div>
                 <div className="max-w-2xl mb-5 text-center">{villaDetails && displayTextWithLineBreaks()}</div>
     
-                <div className="flex gap-5 mb-10">
+                <div className="flex gap-5 mb-10 max-[480px]:flex flex-col">
                   <button onClick={scrollToContactSection}>
                     <MyButton buttonText="Contact Us" />
                   </button>
@@ -68,15 +68,15 @@ export const SingleVillaUI = ({
                 </div>
             </section>
     
-            <section ref={contactSectionRef} className="pt-[60px]">
+            <section ref={contactSectionRef} className="pt-[60px] px-[5%]">
               <div className="flex flex-col max-w-[800px] mx-auto gap-5 mb-5">
-                <h2 className="text-4xl uppercase mx-auto">Contact Us</h2>
-                <p className="text-xl text-center">We would love to hear from you and help you find your dream property. Please fill the form below and one of our agents will connect with you shortly.</p>
+                <h2 className="text-4xl uppercase mx-auto max-md:text-3xl">Contact Us</h2>
+                <p className="text-xl text-center max-md:text-base">We would love to hear from you and help you find your dream property. Please fill the form below and one of our agents will connect with you shortly.</p>
               </div>
               <ContactForm formData={formData} />
             </section>
     
-            <section className="pt-[60px]">
+            <section className="pt-[60px] pb-10">
             {Object.keys(villaDetails).length > 0 &&
                 <GalleryGrid villaDetails={villaDetails} />
             }

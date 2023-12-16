@@ -16,6 +16,20 @@ export const SyncedCarousel = ({villaDetails}) => {
       slidesToScroll: 1
   };
 
+  const settingsForSmallCaro = {
+    slidesToShow:5,
+    swipeToSlide:true,
+    focusOnSelect:true,
+    centerMode:true,
+
+    responsive : [{
+        breakpoint : 600,
+        settings :{
+            slidesToShow: 2,
+        }
+    }],
+  }
+
   return (
     <div>
         <Slider asNavFor={nav2} ref={(slider1) => setNav1(slider1)} {...settings}>
@@ -34,10 +48,7 @@ export const SyncedCarousel = ({villaDetails}) => {
             <Slider
                 asNavFor={nav1}
                 ref={(slider2) => setNav2(slider2)}
-                slidesToShow={5}
-                swipeToSlide={true}
-                focusOnSelect={true}
-                centerMode={true}
+                {...settingsForSmallCaro}
             >
                 {villaDetails.carousel_images.map((villa, index)=>(
                     <div key={index} className="h-[15vh]">

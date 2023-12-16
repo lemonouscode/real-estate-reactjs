@@ -17,7 +17,7 @@ export const Contact = () => {
 
     
   return (
-    <section className="pt-[75px] pb-[75px] px-[5%] min-h-screen">
+    <section className="pt-[75px] pb-[75px] px-[5%] min-h-screen max-md:pt-[100px]">
         <ContactForm formData={{
             values,
             errors,

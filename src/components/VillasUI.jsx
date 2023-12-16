@@ -6,12 +6,12 @@ import { Link } from 'react-router-dom';
 export const VillasUI = ({villas, handleRemoveVilla, isAdmin}) => {
     
     return (
-        <div className='py-20 flex flex-col gap-5'>
+        <div className=' flex flex-col gap-5'>
             <HeroUI imageUrl={propertyImage} 
-                title="FEATURED PROPERTIES" 
+                title="Featured Properties" 
                 subTitle=" Browse our exclusive listings and find your next dream home today!" 
             />
-            <div className='overflow-hidden grid grid-cols-3 gap-4'>
+            <div className='overflow-hidden grid grid-cols-3 gap-4 max-[1320px]:grid-cols-2 max-[880px]:grid-cols-1'>
                 {villas && villas.map((villa) => (
                     <div key={villa.id}>
                         <div className='flex relative h-[40vh] w-full' to={villa.slug}>
@@ -25,7 +25,7 @@ export const VillasUI = ({villas, handleRemoveVilla, isAdmin}) => {
                             <VillasDetail villa={villa} urlPrefix="/villas/" />
                         </div>
                         {isAdmin &&
-                            <div className='flex gap-5 mt-5'>
+                            <div className='flex gap-5 mt-5 max-[480px]:pl-2'>
                                 <Link className='text-white px-5 py-2 border border-white' to={`/edit-villa/${villa.slug}`}>
                                     Edit Villa
                                 </Link>

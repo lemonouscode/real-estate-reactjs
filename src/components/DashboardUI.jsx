@@ -5,7 +5,7 @@ export const DashboardUI = ({contacts}) => {
   return (
     <div>
         <h1 className='text-white text-4xl py-5'>Admin Dashboard</h1>   
-        <div className="flex gap-5 mt-5">
+        <div className="flex gap-5 mt-5 max-md:flex-col">
             <Link to="/create-villa">
                 <MyButton buttonText="Create Villa"/>
             </Link>

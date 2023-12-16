@@ -30,7 +30,7 @@ export const CreateVilla = () => {
   
 
   return (
-    <div>
+    <section className=''>
       <VillaUI 
         formData={{ values,
           errors,
@@ -49,6 +49,6 @@ export const CreateVilla = () => {
         pageTitle="Create New Villa"
         buttonText="Add Villa"
       />
-    </div>
+    </section>
   )
 }

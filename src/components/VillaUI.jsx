@@ -6,9 +6,9 @@ export const VillaUI = ({ formData, pageTitle ,buttonText, children }) => {
   
 
   return (
-    <div className='py-20 flex flex-col gap-5 bg-slate-400'>
-      <h1 className='text-5xl mx-auto mb-5'>{pageTitle}</h1>
-      <form onSubmit={handleSubmit} className='flex flex-col max-w-md mx-auto gap-3'>
+    <div className='py-20 flex flex-col gap-5 bg-slate-400 px-[5%] max-[480px]:pt-[100px]'>
+      <h1 className='text-5xl mx-auto mb-5 text-center max-[480px]:text-3xl'>{pageTitle}</h1>
+      <form onSubmit={handleSubmit} className='flex flex-col max-w-md mx-auto gap-3 max-[480px]:max-w-[280px]'>
         <h3 className='text-xl text-white'>Title</h3>
         <input 
           type="text" 

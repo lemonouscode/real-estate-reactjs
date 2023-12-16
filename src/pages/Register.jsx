@@ -51,7 +51,7 @@ export const Register = () => {
 
 
   return (
-    <section className="pt-[75px] px-[5%] min-h-screen">
+    <section className="pt-[75px] px-[5%] min-h-screen max-md:pt-[100px]">
         <RegisterFormUI formData={{ 
                 values,
                 errors,

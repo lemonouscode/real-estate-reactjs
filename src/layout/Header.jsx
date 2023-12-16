@@ -12,21 +12,23 @@ export const Header = () => {
   const dispatch = useDispatch()
 
   return (
-    <div className="absolute top-0 left-0 z-[2000] flex w-full text-white pt-2 font-bold px-[5%]">
-      <div className="flex gap-5 mx-auto">
-        <Link to="/">Home</Link>
-        <Link to="/villas">Villas</Link>
-        <Link to="/about">About</Link>
-        <Link to="/contact">Contact</Link>
+    <div className="absolute top-0 left-0 z-[2000] flex w-full text-white pt-2 font-bold px-[5%] max-md:flex flex-col">
+      <div className="flex items-center gap-5 mx-auto max-md:gap-3 max-[480px]:flex-col justify-center">
+        <div className="flex gap-5 max-[480px]:gap-3">
+          <Link className="text-center" to="/">Home</Link>
+          <Link className="text-center" to="/villas">Villas</Link>
+          <Link className="text-center" to="/about">About</Link>
+          <Link className="text-center" to="/contact">Contact</Link>
+        </div>
         {!logedUser &&
-          <>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
-          </>
+          <div className="flex items-center gap-5 max-[480px]:mx-auto max-[480px]:gap-3">
+            <Link className="text-center" to="/login">Login</Link>
+            <Link className="text-center" to="/register">Register</Link>
+          </div>
         }
       </div>
       {logedUser &&
-        <div className="absolute right-[5%] flex gap-5">
+        <div className="absolute right-[5%] flex gap-5 max-md:static pt-3 mx-auto">
           {isAdmin == 1 ?
             <Link className="text-amber-700" to="/dashboard">Dashboard</Link>
           :

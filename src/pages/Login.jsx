@@ -50,20 +50,23 @@ export const Login = () => {
 
   
   return (
-    <section className="pt-[75px] min-h-screen">
-        <LoginFormUI 
-          formData={{
-              values,
-              errors,
-              touched,
-              isSubmitting,
-              isValid,
-              handleBlur,
-              handleChange,
-              handleSubmit,
-          }}
-          loginStatus={loginStatus}
-        />
+    <section className="pt-[75px] min-h-screen px-[5%] max-md:pt-[100px]">
+        <div className="max-w-[800px] mx-auto">
+          <h1 className='text-white mb-5 text-6xl uppercase font-bold max-md:text-4xl'>Login Page</h1>
+          <LoginFormUI 
+            formData={{
+                values,
+                errors,
+                touched,
+                isSubmitting,
+                isValid,
+                handleBlur,
+                handleChange,
+                handleSubmit,
+            }}
+            loginStatus={loginStatus}
+          />
+        </div>
     </section>
   )
 }

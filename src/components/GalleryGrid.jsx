@@ -32,7 +32,7 @@ export const GalleryGrid = ({villaDetails}) => {
 
   return (
     <div>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-3 gap-4 max-[480px]:grid-cols-2">
           {villaDetails.gallery_images.map((image, index)=>(
             <img key={index} src={image.img_path} alt="" onClick={()=>setOpenLight(!openLight)} />
           ))}

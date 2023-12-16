@@ -1,13 +1,16 @@
 import { useState, useRef, useEffect } from 'react';
 import { useFormik } from 'formik';
 import { createVillaSchema } from '../schemas/createVillaSchema';
-
+import { useGetVillasQuery } from '../redux/features/villaApi';
+import { useNavigate } from "react-router-dom"
 
 const useVilla = (uploadFunction, editVilla, editInitialValues) => {
   const featuredRef = useRef(null);
   const carouselRef = useRef(null);
   const galleryRef = useRef(null);
   const [uploadStatus, setUploadStatus] = useState(null);
+  const {data:villas, refetch} = useGetVillasQuery();
+  const navigate = useNavigate();
 
   const [changeFeatured, setChangeFeatured] = useState("");
 
@@ -52,6 +55,9 @@ const useVilla = (uploadFunction, editVilla, editInitialValues) => {
     // Flexible villaApi usage  
     const response = await uploadFunction(formData);
     setUploadStatus(response);
+    refetch();
+    // Redirect to villas
+    navigate('/villas')
   };
 
   
