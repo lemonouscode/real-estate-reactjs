@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'http://localhost:8000/api',
+  baseUrl:import.meta.env.VITE_BASE_URL,
   prepareHeaders: (headers, { getState }) => {
     // const token = getState().auth.token;
     const token = localStorage.getItem('jwt_token');
@@ -65,9 +65,12 @@ export const villaApi = createApi({
     saveVilla:builder.mutation({
       query: (data)=> {
         return {
-          url: '/save-villa/',
+          url: '/save-villa',
           method: 'POST',
-          body: data
+          body: data,
+          headers: {
+            'Content-type': 'application/json',
+          },
         }
       }
     }),

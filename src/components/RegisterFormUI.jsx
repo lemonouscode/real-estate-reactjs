@@ -43,7 +43,7 @@ export const RegisterFormUI = ({formData, registerStatus}) => {
             Password
             <input 
                 className="text-black"
-                type="text" 
+                type="password" 
                 id="password" 
                 value={values.password}
                 onChange={handleChange}

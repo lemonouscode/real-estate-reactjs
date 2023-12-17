@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: 'http://localhost:8000/api',
+    baseUrl:import.meta.env.VITE_BASE_URL,
     prepareHeaders: (headers, { getState }) => {
       // const token = getState().auth.token;
       const token = localStorage.getItem('jwt_token');

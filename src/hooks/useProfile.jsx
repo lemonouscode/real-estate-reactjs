@@ -8,7 +8,6 @@ export const useProfile = () => {
   const name = useSelector(selectName);
   const userID = useSelector(selectID);
   const [userDetails, setUserDetails] = useState("");
-  
   const {data, refetch} = useGetSavedVillasQuery(userID);
   const [unSaveVilla] = useUnSaveVillaMutation();
 

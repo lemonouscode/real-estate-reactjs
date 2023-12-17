@@ -31,7 +31,7 @@ export const Router = () => {
           <Route path="/edit-villa/:villaSlug" element={<EditVilla />} />
         </Route>
 
-        <Route element={<UserProtectedRoute />}>
+        <Route element={<UserProtectedRoute redirectPath="/login" />}>
           <Route path="/profile" element={<Profile/>} />
         </Route>
 

@@ -50,7 +50,7 @@ export const SingleVillaUI = ({
                   <button onClick={scrollToContactSection}>
                     <MyButton buttonText="Contact Us" />
                   </button>
-                  {!savedVilla && !isAdmin &&
+                  {!savedVilla && isAdmin == 0 &&
                     <button onClick={handleSaveVilla}>
                       <MyButton buttonText="Save Villa" />
                     </button>

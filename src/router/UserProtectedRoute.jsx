@@ -10,7 +10,7 @@ export const UserProtectedRoute = ({ redirectPath = '/',children }) => {
         return <Navigate to={redirectPath} replace />;
     }
 
-    if (isAdmin) {
+    if (isAdmin != 0) {
         return <Navigate to="/" replace />;
     }
     

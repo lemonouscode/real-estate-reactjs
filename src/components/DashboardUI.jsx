@@ -17,9 +17,9 @@ export const DashboardUI = ({contacts}) => {
         <h2 className="text-white text-2xl pt-10 pb-5">Submited Contact Forms</h2>
         {contacts && contacts.map((contact)=>(
         <div key={contact.id} className="flex flex-col gap-1 text-white mb-10 border-b border-white">
-            <p>{contact.name}</p>
-            <p>{contact.email}</p>
-            <p>{contact.message}</p>
+            <p>Name: {contact.name}</p>
+            <p>Email: {contact.email}</p>
+            <p>Message: {contact.message}</p>
         </div>
         ))}
     </div>

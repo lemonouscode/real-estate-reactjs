@@ -24,7 +24,7 @@ export const VillasUI = ({villas, handleRemoveVilla, isAdmin}) => {
                             </div>
                             <VillasDetail villa={villa} urlPrefix="/villas/" />
                         </div>
-                        {isAdmin &&
+                        {isAdmin == 1 &&
                             <div className='flex gap-5 mt-5 max-[480px]:pl-2'>
                                 <Link className='text-white px-5 py-2 border border-white' to={`/edit-villa/${villa.slug}`}>
                                     Edit Villa
